@@ -15,7 +15,7 @@ const LightTheme: IMobileTheme = {
     borderColor: '#0E2C39',
   },
   background: {
-    primaryColor: '#001F5F',
+    primaryColor: '#FFFFFF',
     secondaryColor: '#FFFFFF',
     tertiaryColor: '#E5E5E5',
     dimColor: hexToRgb('#000000', 0.4),

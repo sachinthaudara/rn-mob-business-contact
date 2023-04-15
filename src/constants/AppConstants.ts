@@ -1,4 +1,5 @@
 const AppConstants = {
+  appNamePrefix: 'BusinessContacts-',
   themeMode: {
     DARK: 'dark',
     LIGHT: 'light',

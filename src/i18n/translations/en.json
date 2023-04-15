@@ -6,9 +6,8 @@
     "done": "Done",
     "cancel": "Cancel",
     "save": "Save",
-    "call": "Call",
     "add": "Add",
-    "edit": "Update"
+    "update": "Update"
   },
   "success": {
     "title": "Successfully"

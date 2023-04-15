@@ -8,7 +8,6 @@ import HomeScreen from '../features/business-card/screens/home/HomeScreen';
 export const AppProvider = () => {
   useEffect(() => {
     SplashScreen.hide();
-    console.log('came here');
   }, []);
 
   return (

@@ -1,11 +1,13 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+import { BaseView } from '../../../../components';
+import { AppTestIDs } from '../../../../constants';
 
 const HomeScreen = (): JSX.Element => {
   return (
-    <View>
+    <BaseView testID={AppTestIDs.home.homeScreen} screenTitle={'Home Screen'}>
       <Text>Hello World</Text>
-    </View>
+    </BaseView>
   );
 };
 
