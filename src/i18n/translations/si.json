@@ -1,0 +1,20 @@
+{
+  "buttons": {
+    "yes": "Yes",
+    "no": "No",
+    "ok": "Ok",
+    "done": "Done",
+    "cancel": "Cancel",
+    "save": "Save",
+    "call": "Call",
+    "add": "Add",
+    "edit": "Update"
+  },
+  "success": {
+    "title": "Successfully"
+  },
+  "error": {
+    "title": "Error",
+    "description": "Something went wrong."
+  }
+}
