@@ -9,7 +9,7 @@ const LightTheme: IMobileTheme = {
     primaryColor: '#FFFFFF',
     accentColor: '#9f3ade',
     secondaryColor: '#de3a9c',
-    shadowColor: hexToRgb('#000000', 0.1),
+    shadowColor: '#000000',
     errorColor: '#D2201E',
     linkColor: '#1C6AB8',
     borderColor: '#0E2C39',

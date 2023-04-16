@@ -1,6 +1,6 @@
 const FontFamilyType = 'Nunito-';
 
-export const SharedMobileFontFamily = {
+export const AppFontFamily = {
   Light: `${FontFamilyType}Light`,
   Medium: `${FontFamilyType}Medium`,
   SemiBold: `${FontFamilyType}SemiBold`,

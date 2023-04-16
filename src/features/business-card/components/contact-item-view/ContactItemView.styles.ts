@@ -2,9 +2,13 @@ import { StyleSheet } from 'react-native';
 import { Spacing } from '../../../../styles';
 
 const Styles = StyleSheet.create({
-  listViewContentContainer: {
-    paddingVertical: Spacing.y24,
-    paddingHorizontal: Spacing.x16,
+  iconView: {
+    height: 16,
+    width: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: Spacing.x8,
   },
 });
 

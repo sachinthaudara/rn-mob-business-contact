@@ -1,49 +1,44 @@
 import { StyleSheet } from 'react-native';
 import { FontSize } from '../styles/FontSizes';
 import { IMobileTheme } from '../types/IMobileTheme';
-import { SharedMobileFontFamily } from './FontFamily';
+import { AppFontFamily } from './FontFamily';
 
 const Styles = (colors: IMobileTheme) => {
   return StyleSheet.create({
     header: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f24,
-      fontFamily: SharedMobileFontFamily.ExtraBold,
+      fontFamily: AppFontFamily.ExtraBold,
     },
     navHeader: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f22,
-      fontFamily: SharedMobileFontFamily.Bold,
+      fontFamily: AppFontFamily.Bold,
     },
     title: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f20,
-      fontFamily: SharedMobileFontFamily.Bold,
+      fontFamily: AppFontFamily.Bold,
     },
     subtitle: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f18,
-      fontFamily: SharedMobileFontFamily.Medium,
     },
     caption: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f16,
-      fontFamily: SharedMobileFontFamily.SemiBold,
     },
     text: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f14,
-      fontFamily: SharedMobileFontFamily.SemiBold,
     },
     label: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f12,
-      fontFamily: SharedMobileFontFamily.SemiBold,
     },
     smallText: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f10,
-      fontFamily: SharedMobileFontFamily.SemiBold,
     },
   });
 };

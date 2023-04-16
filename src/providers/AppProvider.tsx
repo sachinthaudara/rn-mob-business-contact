@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import { ThemeProvider } from '../theme';
 import { StatusBar } from 'react-native';
-import { Colors } from '../styles';
+import { GenericStyles } from '../styles';
 import HomeScreen from '../features/business-card/screens/home/HomeScreen';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { RecoilRoot } from 'recoil';
 
 export const AppProvider = () => {
   useEffect(() => {
@@ -11,14 +13,16 @@ export const AppProvider = () => {
   }, []);
 
   return (
-    <ThemeProvider>
-      <StatusBar
-        translucent
-        backgroundColor={Colors.TRANSPARENT}
-        barStyle="light-content"
-      />
-      <HomeScreen />
-    </ThemeProvider>
+    <RecoilRoot>
+      <ThemeProvider>
+        <StatusBar translucent barStyle="default" />
+        <SafeAreaView
+          style={GenericStyles.flex1}
+          edges={['right', 'bottom', 'left', 'top']}>
+          <HomeScreen />
+        </SafeAreaView>
+      </ThemeProvider>
+    </RecoilRoot>
   );
 };
 

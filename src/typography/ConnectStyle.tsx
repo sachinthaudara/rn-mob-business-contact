@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Styles from './Styles';
 import { useTheme } from '../theme/ThemeProvider';
 import { FontWeight } from './FontWeight';
-import { SharedMobileFontFamily } from './FontFamily';
+import { AppFontFamily } from './FontFamily';
 import { FontClass } from './FontClass';
 
 export const translateProps = (
@@ -93,17 +93,17 @@ export default (componentStyleName: any) => {
 export const getFontFamily = (weight: FontWeight) => {
   switch (weight) {
     case FontWeight.Light:
-      return SharedMobileFontFamily.Light;
+      return AppFontFamily.Light;
     case FontWeight.Medium:
-      return SharedMobileFontFamily.Medium;
+      return AppFontFamily.Medium;
     case FontWeight.SemiBold:
-      return SharedMobileFontFamily.SemiBold;
+      return AppFontFamily.SemiBold;
     case FontWeight.Bold:
-      return SharedMobileFontFamily.Bold;
+      return AppFontFamily.Bold;
     case FontWeight.ExtraBold:
-      return SharedMobileFontFamily.ExtraBold;
+      return AppFontFamily.ExtraBold;
     default:
-      return SharedMobileFontFamily.Regular;
+      return AppFontFamily.SemiBold;
   }
 };
 
