@@ -9,7 +9,9 @@
     "start": "react-native start",
     "test": "jest",
     "prepare": "husky install",
-    "postinstall": "npx react-native setup-ios-permissions && npx pod-install"
+    "postinstall": "npx react-native setup-ios-permissions && npx pod-install",
+    "repo/rehydrate": "sh scripts/repo.rehydrate.sh",
+    "repo/sonar-scanner": "sh scripts/repo.sonar-scanner.sh"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.18.1",
