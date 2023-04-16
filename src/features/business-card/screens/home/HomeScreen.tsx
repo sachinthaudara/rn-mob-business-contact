@@ -1,12 +1,16 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { BaseView } from '../../../../components';
 import { AppTestIDs } from '../../../../constants';
+import { EmptyCardsView } from '../../components';
+import { BaseView } from '../../../../components';
 
 const HomeScreen = (): JSX.Element => {
+  const onPressAddFirstBCard = () => {
+    // TODO -> Navigate to add card screen
+  };
+
   return (
-    <BaseView testID={AppTestIDs.home.homeScreen} screenTitle={'Home Screen'}>
-      <Text>Hello World</Text>
+    <BaseView testID={AppTestIDs.home.homeScreen}>
+      <EmptyCardsView onPressAddFirstBCard={onPressAddFirstBCard} />
     </BaseView>
   );
 };

@@ -16,4 +16,11 @@ export const AppTextPhrases = {
     title: 'error.title',
     description: 'error.description',
   },
+  home: {
+    empty_bcard: {
+      title: 'home.empty_bcard.title',
+      description: 'home.empty_bcard.description',
+      button: 'home.empty_bcard.button',
+    },
+  },
 };

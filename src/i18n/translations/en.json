@@ -15,5 +15,12 @@
   "error": {
     "title": "Error",
     "description": "Something went wrong."
+  },
+  "home": {
+    "empty_bcard": {
+      "title": "Add Your Fist Business Card !",
+      "description": "Save contact details easily on a phone and avoid using paper business cards to help the environment.",
+      "button": "Add Card"
+    }
   }
 }

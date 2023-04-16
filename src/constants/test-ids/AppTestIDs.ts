@@ -4,5 +4,6 @@ export const AppTestIDs = {
   buttonBack: `${AppConstants.appNamePrefix}ButtonBack`,
   home: {
     homeScreen: `${AppConstants.appNamePrefix}HomeScreen`,
+    addFistBCard: `${AppConstants.appNamePrefix}AddFirstBCard`,
   },
 };
