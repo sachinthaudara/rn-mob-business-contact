@@ -9,6 +9,14 @@
     "add": "Add",
     "update": "Update"
   },
+  "permission": {
+    "phone_contact": {
+      "fail": {
+        "title": "Cannot Access Phone Contacts",
+        "message": "Please allow phone contact access from Settings"
+      }
+    }
+  },
   "success": {
     "title": "Successfully"
   },
@@ -61,7 +69,11 @@
       "title": "Delete",
       "description": "Are you sure you want to delete ?"
     },
-    "update": {
+    "update_phone_contact": {
+      "title": "Update to Phone Contact",
+      "description": "Are you sure you want to update existing contact ?"
+    },
+    "save_phone_contact": {
       "title": "Save to Phone Contact",
       "description": "Are you sure you want to save in phone contacts ?"
     }

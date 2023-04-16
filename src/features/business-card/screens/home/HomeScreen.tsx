@@ -43,15 +43,22 @@ const HomeScreen = ({ navigation }: HomeScreenProps): JSX.Element => {
 
   if (businessCards.length > 0) {
     renderView = (
-      <View style={GenericStyles.flex1}>
-        <FlatList
-          style={GenericStyles.flex1}
-          contentContainerStyle={styles.listViewContentContainer}
-          keyExtractor={card => card.id.toString()}
-          data={businessCards}
-          renderItem={renderBusinessCardView}
+      <>
+        <View style={GenericStyles.flex1}>
+          <FlatList
+            style={GenericStyles.flex1}
+            contentContainerStyle={styles.listViewContentContainer}
+            keyExtractor={card => card.id.toString()}
+            data={businessCards}
+            renderItem={renderBusinessCardView}
+          />
+        </View>
+        <FabButton
+          icon="+"
+          style={styles.fabAddButton}
+          onPress={onPressAddBCard}
         />
-      </View>
+      </>
     );
   } else {
     renderView = <EmptyCardsView onPressAddFirstBCard={onPressAddBCard} />;
@@ -60,11 +67,6 @@ const HomeScreen = ({ navigation }: HomeScreenProps): JSX.Element => {
   return (
     <BaseView showHeader={false} testID={AppTestIDs.home.homeScreen}>
       {renderView}
-      <FabButton
-        icon="+"
-        style={styles.fabAddButton}
-        onPress={onPressAddBCard}
-      />
     </BaseView>
   );
 };

@@ -4,21 +4,19 @@ import { NavigationProp } from '@react-navigation/core';
 import { useTranslation } from 'react-i18next';
 import { useRecoilCallback, useRecoilValue } from 'recoil';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import Contacts, { Contact } from 'react-native-contacts';
 
-import { BaseView, NullView } from '../../../../components';
+import { BaseView } from '../../../../components';
 import { useTheme } from '../../../../theme';
 import Styles from './ManageBCardScreen.styles';
 import {
   deleteBusinessCardAction,
   selectedBusinessCardState,
 } from '../../../../recoil';
-import { NameAvatarView } from '../../components/name-avatar-view';
 import { IBusinessCard } from '../../../../types';
-import { FontSize, hScale } from '../../../../styles';
-import { Caption, Text, Title } from '../../../../typography';
-import { ContactItemView } from '../../components';
-import { ContactDetails, ContactDetailsViewType } from '../../../../enums';
 import { AppTestIDs, AppTextPhrases } from '../../../../constants';
+import { requestPhoneContactPermissions } from '../../../../utils';
+import { BusinessCardDetailsView } from '../../components/business-card-details-view';
 
 interface ManageBCardScreenProps {
   navigation: NavigationProp<any, any>;
@@ -39,63 +37,6 @@ const ManageBCardScreen = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const goBackHandler = () => {
     navigation.goBack();
-  };
-
-  const bCardDetailsView = (): JSX.Element => {
-    if (businessCard) {
-      return (
-        <View style={styles.container}>
-          <NameAvatarView
-            size={hScale(100)}
-            fontSize={FontSize.f48}
-            titleText={businessCard.personName}
-            tintColor={businessCard.cardTintColor}
-          />
-          <View style={styles.personalDetailView}>
-            <Title
-              style={styles.personalDetailText}
-              numberOfLines={2}
-              ellipsizeMode="tail">
-              {businessCard.personName}
-            </Title>
-            <Text
-              style={styles.occupationText}
-              numberOfLines={2}
-              ellipsizeMode="tail">
-              {businessCard.occupation}
-            </Text>
-            <Caption
-              style={styles.personalDetailText}
-              numberOfLines={2}
-              ellipsizeMode="tail">
-              {businessCard.company}
-            </Caption>
-          </View>
-
-          <View style={styles.contactContainer}>
-            <ContactItemView
-              viewType={ContactDetailsViewType.ManageScreen}
-              item={businessCard}
-              detailType={ContactDetails.Phone}
-            />
-            <View style={styles.emailContainer}>
-              <ContactItemView
-                viewType={ContactDetailsViewType.ManageScreen}
-                item={businessCard}
-                detailType={ContactDetails.Email}
-              />
-            </View>
-            <ContactItemView
-              viewType={ContactDetailsViewType.ManageScreen}
-              item={businessCard}
-              detailType={ContactDetails.Linkedin}
-            />
-          </View>
-        </View>
-      );
-    } else {
-      return <NullView />;
-    }
   };
 
   const onPressDelete = () => {
@@ -121,27 +62,151 @@ const ManageBCardScreen = ({
     );
   };
 
-  const onPressSavePhoneContact = () => {
-    Alert.alert(
-      t(AppTextPhrases.manageBCard.update.title),
-      t(AppTextPhrases.manageBCard.update.description) || '',
-      [
-        {
-          text: t(AppTextPhrases.buttons.ok) || '',
-          onPress: () => {
-            deleteBusinessCard(businessCard);
-            goBackHandler();
+  const onPressSavePhoneContact = async () => {
+    let existingContact: Contact | null = null;
+
+    const canAccessPhoneContact = await requestPhoneContactPermissions();
+    if (canAccessPhoneContact) {
+      // Check there are existing contacts
+      const phoneContacts = await Contacts.getAllWithoutPhotos();
+      phoneContacts.forEach(contact => {
+        contact.phoneNumbers.forEach(phoneNumber => {
+          if (phoneNumber.number === businessCard?.mobileNumber) {
+            existingContact = contact;
+            console.log(contact);
+          }
+        });
+      });
+
+      if (existingContact) {
+        // If there are any existing contact ask from app user to update it with existing contact
+        Alert.alert(
+          t(AppTextPhrases.manageBCard.updatePhoneContact.title),
+          t(AppTextPhrases.manageBCard.updatePhoneContact.description) || '',
+          [
+            {
+              text: t(AppTextPhrases.buttons.ok) || '',
+              onPress: () => {
+                savePhoneContacts(existingContact);
+              },
+              style: 'cancel',
+            },
+            {
+              text: t(AppTextPhrases.buttons.no) || '',
+              onPress: () => {
+                return;
+              },
+            },
+          ],
+        );
+      } else {
+        // If there are no any existing contact ask from app user to add new contact
+        Alert.alert(
+          t(AppTextPhrases.manageBCard.savePhoneContact.title),
+          t(AppTextPhrases.manageBCard.savePhoneContact.description) || '',
+          [
+            {
+              text: t(AppTextPhrases.buttons.ok) || '',
+              onPress: () => {
+                savePhoneContacts(null);
+              },
+              style: 'cancel',
+            },
+            {
+              text: t(AppTextPhrases.buttons.no) || '',
+              onPress: () => {
+                return;
+              },
+            },
+          ],
+        );
+      }
+    } else {
+      // If permission not allow, shows the fail message
+      Alert.alert(
+        t(AppTextPhrases.permission.phoneContact.fail.title),
+        t(AppTextPhrases.permission.phoneContact.fail.message) || '',
+        [
+          {
+            text: t(AppTextPhrases.buttons.ok) || '',
+            onPress: () => {
+              return;
+            },
           },
-          style: 'cancel',
-        },
-        {
-          text: t(AppTextPhrases.buttons.no) || '',
-          onPress: () => {
-            return;
+        ],
+      );
+    }
+  };
+
+  // If existing contact available, then update it, or else add new contact
+  const savePhoneContacts = async (existingContact: Contact | null) => {
+    try {
+      if (businessCard) {
+        const urlAddresses = businessCard.linkedInUrl
+          ? [
+              {
+                label: 'other',
+                url: businessCard.linkedInUrl,
+              },
+            ]
+          : null;
+
+        let newContact: Contact | any = {
+          ...existingContact,
+          emailAddresses: [
+            {
+              label: 'work',
+              email: businessCard.email,
+            },
+          ],
+          familyName: '',
+          givenName: businessCard.personName,
+          recordID: existingContact ? existingContact.recordID : '',
+          backTitle: '',
+          company: businessCard.company,
+          displayName: '',
+          middleName: '',
+          jobTitle: businessCard.occupation,
+          phoneNumbers: [
+            {
+              label: 'mobile',
+              number: businessCard.mobileNumber,
+            },
+          ],
+          hasThumbnail: false,
+          thumbnailPath: '',
+          isStarred: false,
+          postalAddresses: [],
+          prefix: '',
+          suffix: '',
+          department: '',
+          birthday: { day: 0, month: 0, year: 0 },
+          imAddresses: [],
+          note: '',
+          urlAddresses,
+        };
+
+        if (existingContact) {
+          await Contacts.updateContact(newContact);
+        } else {
+          await Contacts.addContact(newContact);
+        }
+      }
+    } catch (error) {
+      // If there are any error occurs from Contacts plugin, shows generic error alert
+      Alert.alert(
+        t(AppTextPhrases.error.title),
+        t(AppTextPhrases.error.description) || '',
+        [
+          {
+            text: t(AppTextPhrases.buttons.ok) || '',
+            onPress: () => {
+              return;
+            },
           },
-        },
-      ],
-    );
+        ],
+      );
+    }
   };
 
   return (
@@ -149,7 +214,7 @@ const ManageBCardScreen = ({
       testID={AppTestIDs.manageBCard.savePhoneContact}
       screenTitle={t(AppTextPhrases.manageBCard.navHeader)}
       goBackHandler={goBackHandler}>
-      {bCardDetailsView()}
+      <BusinessCardDetailsView businessCard={businessCard} />
       <View style={styles.fabContainer}>
         <TouchableOpacity
           onPress={onPressSavePhoneContact}

@@ -9,6 +9,14 @@ export const AppTextPhrases = {
     add: 'buttons.add',
     edit: 'buttons.update',
   },
+  permission: {
+    phoneContact: {
+      fail: {
+        title: 'permission.phone_contact.fail.title',
+        message: 'permission.phone_contact.fail.message',
+      },
+    },
+  },
   success: {
     title: 'success.title',
   },
@@ -59,9 +67,13 @@ export const AppTextPhrases = {
       title: 'manage_bcard.delete.title',
       description: 'manage_bcard.delete.description',
     },
-    update: {
-      title: 'manage_bcard.update.title',
-      description: 'manage_bcard.update.description',
+    updatePhoneContact: {
+      title: 'manage_bcard.update_phone_contact.title',
+      description: 'manage_bcard.update_phone_contact.description',
+    },
+    savePhoneContact: {
+      title: 'manage_bcard.save_phone_contact.title',
+      description: 'manage_bcard.save_phone_contact.description',
     },
   },
 };

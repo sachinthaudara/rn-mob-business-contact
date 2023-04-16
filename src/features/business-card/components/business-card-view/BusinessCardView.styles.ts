@@ -1,12 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { IMobileTheme } from '../../../../types';
 import { Spacing, hScale } from '../../../../styles';
+import { hexToRgb } from '../../../../utils';
 
 const nameAvatarSize = hScale(68);
 
 const Styles = (colors: IMobileTheme) => {
   return StyleSheet.create({
     itemContainer: {
+      backgroundColor: colors.background.primaryColor,
       padding: Spacing.x16,
       marginBottom: 16,
       borderRadius: 2,
@@ -14,7 +16,10 @@ const Styles = (colors: IMobileTheme) => {
       borderTopWidth: 10,
       borderRightWidth: 4,
       borderBottomWidth: 4,
-      shadowColor: colors.default.shadowColor,
+      shadowColor:
+        Platform.OS === 'ios'
+          ? hexToRgb(colors.default.shadowColor, 0.5)
+          : colors.default.shadowColor,
       shadowOffset: { width: 0, height: 3 },
       shadowOpacity: 10,
       shadowRadius: 10,
