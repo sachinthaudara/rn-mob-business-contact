@@ -3,15 +3,17 @@ import { Text } from 'react-native';
 import { BaseView } from '../../../../components';
 import { NavigationProp } from '@react-navigation/core';
 
-interface AddBCardScreenProps {
+interface ManageBCardScreenProps {
   navigation: NavigationProp<any, any>;
 }
 
-const AddBCardScreen = ({ navigation }: AddBCardScreenProps): JSX.Element => {
+const ManageBCardScreen = ({
+  navigation,
+}: ManageBCardScreenProps): JSX.Element => {
   return (
     <BaseView
       testID="test"
-      screenTitle={'Add Business Card'}
+      screenTitle={'Manage Business Card'}
       goBackHandler={() => {
         navigation.goBack();
       }}>
@@ -20,4 +22,4 @@ const AddBCardScreen = ({ navigation }: AddBCardScreenProps): JSX.Element => {
   );
 };
 
-export default AddBCardScreen;
+export default ManageBCardScreen;

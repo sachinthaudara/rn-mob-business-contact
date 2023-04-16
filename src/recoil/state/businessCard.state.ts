@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
 import { IBusinessCard } from '../../types';
 
-const businessCardsState = atom<IBusinessCard[]>({
-  key: 'BusinessCardsState',
+const businessCardListState = atom<IBusinessCard[]>({
+  key: 'BusinessCardListState',
   default: [
     {
       id: 0,
@@ -72,4 +72,4 @@ const selectedBusinessCardState = atom<IBusinessCard | null>({
   default: null,
 });
 
-export { businessCardsState, selectedBusinessCardState };
+export { businessCardListState, selectedBusinessCardState };

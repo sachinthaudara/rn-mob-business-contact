@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AppTestIDs } from '../../../../constants';
+import { AppStackNavigationIds, AppTestIDs } from '../../../../constants';
 import { BusinessCardView, EmptyCardsView } from '../../components';
 import { BaseView } from '../../../../components';
 import { FlatList } from 'react-native-gesture-handler';
@@ -9,25 +9,30 @@ import { ListRenderItem, View } from 'react-native';
 import { IBusinessCard } from '../../../../types';
 import {
   selectedBusinessCardState,
-  businessCardsState,
+  businessCardListState,
 } from '../../../../recoil';
 import { GenericStyles } from '../../../../styles';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { NavigationProp } from '@react-navigation/core';
 
-const HomeScreen = (): JSX.Element => {
-  const businessCards = useRecoilValue(businessCardsState);
+type HomeScreenProps = {
+  navigation: NavigationProp<any, any>;
+};
+
+const HomeScreen = ({ navigation }: HomeScreenProps): JSX.Element => {
+  const businessCards = useRecoilValue(businessCardListState);
   const setSelectedBusinessItem = useSetRecoilState<IBusinessCard | null>(
     selectedBusinessCardState,
   );
   let renderView = null;
 
   const onPressAddFirstBCard = () => {
-    // TODO -> Navigate to add card screen
+    navigation.navigate(AppStackNavigationIds.addBCard);
   };
 
   const onPressBCard = (card: IBusinessCard) => {
     setSelectedBusinessItem(card);
-    // TODO -> navigate to the card view screen
+    navigation.navigate(AppStackNavigationIds.manageBCard);
   };
 
   const renderBusinessCardView: ListRenderItem<IBusinessCard> = ({
