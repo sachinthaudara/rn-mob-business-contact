@@ -45,17 +45,17 @@ const ManageBCardScreen = ({
       t(AppTextPhrases.manageBCard.delete.description) || '',
       [
         {
+          text: t(AppTextPhrases.buttons.no) || '',
+          onPress: () => {
+            return;
+          },
+        },
+        {
+          style: 'destructive',
           text: t(AppTextPhrases.buttons.ok) || '',
           onPress: () => {
             deleteBusinessCard(businessCard);
             goBackHandler();
-          },
-          style: 'cancel',
-        },
-        {
-          text: t(AppTextPhrases.buttons.no) || '',
-          onPress: () => {
-            return;
           },
         },
       ],
@@ -85,16 +85,15 @@ const ManageBCardScreen = ({
           t(AppTextPhrases.manageBCard.updatePhoneContact.description) || '',
           [
             {
-              text: t(AppTextPhrases.buttons.ok) || '',
-              onPress: () => {
-                savePhoneContacts(existingContact);
-              },
-              style: 'cancel',
-            },
-            {
               text: t(AppTextPhrases.buttons.no) || '',
               onPress: () => {
                 return;
+              },
+            },
+            {
+              text: t(AppTextPhrases.buttons.ok) || '',
+              onPress: () => {
+                savePhoneContacts(existingContact);
               },
             },
           ],
@@ -106,16 +105,15 @@ const ManageBCardScreen = ({
           t(AppTextPhrases.manageBCard.savePhoneContact.description) || '',
           [
             {
-              text: t(AppTextPhrases.buttons.ok) || '',
-              onPress: () => {
-                savePhoneContacts(null);
-              },
-              style: 'cancel',
-            },
-            {
               text: t(AppTextPhrases.buttons.no) || '',
               onPress: () => {
                 return;
+              },
+            },
+            {
+              text: t(AppTextPhrases.buttons.ok) || '',
+              onPress: () => {
+                savePhoneContacts(null);
               },
             },
           ],
