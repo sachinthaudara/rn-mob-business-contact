@@ -22,5 +22,37 @@
       "description": "Save contact details easily on a phone and avoid using paper business cards to help the environment.",
       "button": "Add Card"
     }
+  },
+  "add_bcard": {
+    "nav_header": "Add Business Card",
+    "welcome": {
+      "title": "Fill all the details !",
+      "description": "Save contact details helps you to manage digital business card."
+    },
+    "save_button": "Save Card",
+    "person_name": {
+      "placeholder": "Enter person name",
+      "error": "Invalid Email"
+    },
+    "occupation": {
+      "placeholder": "Enter occupation",
+      "error": "Invalid Occupation"
+    },
+    "company": {
+      "placeholder": "Enter company name",
+      "error": "Invalid Company"
+    },
+    "email": {
+      "placeholder": "Enter email",
+      "error": "Invalid Email"
+    },
+    "mobile_number": {
+      "placeholder": "Enter mobile number",
+      "error": "Invalid Mobile Number"
+    },
+    "linked_in_url": {
+      "placeholder": "Enter LinkedIn URL",
+      "error": "Invalid URL"
+    }
   }
 }

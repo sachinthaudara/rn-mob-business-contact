@@ -1,6 +1,6 @@
 import { KeyboardTypeOptions } from 'react-native';
 
-export const KEYBOARD_TYPES = {
+export const KeyboardTypes = {
   default: 'default' as KeyboardTypeOptions,
   email: 'email-address' as KeyboardTypeOptions,
   numeric: 'numeric' as KeyboardTypeOptions,

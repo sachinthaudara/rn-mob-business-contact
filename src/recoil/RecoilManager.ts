@@ -13,6 +13,7 @@ const rehydrateBusinessCardList = async () => {
     } else {
       cachedBusinessCardList = JSON.parse(businessCardList);
     }
+    console.log(cachedBusinessCardList);
     setRecoil(businessCardListState, cachedBusinessCardList);
   } catch (error) {
     setRecoil(businessCardListState, cachedBusinessCardList);

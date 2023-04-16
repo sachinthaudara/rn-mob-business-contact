@@ -2,8 +2,7 @@ export interface IBusinessCard {
   id: number;
   cardColor: string;
   cardTintColor: string;
-  firstName: string;
-  lastName: string;
+  personName: string;
   mobileNumber: string;
   email: string;
   company: string;

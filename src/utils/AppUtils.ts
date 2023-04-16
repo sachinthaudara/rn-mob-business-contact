@@ -21,3 +21,21 @@ export const hexToRgb = (hexValue: string, alpha?: number): string => {
 
   return alpha ? `rgba(${r}, ${g}, ${b}, ${alpha})` : `rgb(${r}, ${g}, ${b})`;
 };
+
+/**
+ * Get random color
+ * @returns {string} random hex value
+ */
+export const getRandomColor = (): string => {
+  const BusinessCardColors = [
+    '#0d6aff',
+    '#4dffd5',
+    '#f86eff',
+    '#fffd6e',
+    '#ff906e',
+  ];
+
+  return BusinessCardColors[
+    Math.floor(Math.random() * BusinessCardColors.length)
+  ];
+};

@@ -26,8 +26,7 @@ export const BusinessCardView = ({
   const { theme } = useContext(useTheme);
   const styles = Styles(theme);
 
-  const nameTitle = `${item.firstName[0]}${item.lastName[0]}`;
-  const fullName = `${item.firstName} ${item.lastName}`;
+  const nameTitle = `${item.personName[0]}`.toUpperCase();
   return (
     <TouchableOpacity
       onPress={() => onPressBCard(item)}
@@ -47,7 +46,7 @@ export const BusinessCardView = ({
               numberOfLines={2}
               ellipsizeMode="tail"
               weight={FontWeight.Bold}>
-              {fullName}
+              {item.personName}
             </Subtitle>
             <SmallText numberOfLines={1} ellipsizeMode="tail">
               {item.occupation}

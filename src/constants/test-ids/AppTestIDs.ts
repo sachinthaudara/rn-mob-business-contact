@@ -6,4 +6,8 @@ export const AppTestIDs = {
     homeScreen: `${AppConstants.appNamePrefix}HomeScreen`,
     addFistBCard: `${AppConstants.appNamePrefix}AddFirstBCard`,
   },
+  addBCard: {
+    addBCardScreen: `${AppConstants.appNamePrefix}AddBCard`,
+    saveButton: `${AppConstants.appNamePrefix}AddBCard-SaveButton`,
+  },
 };

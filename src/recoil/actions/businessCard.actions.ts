@@ -6,11 +6,6 @@ import { kBusinessCardList } from '../../constants';
 const addBusinessCardAction =
   ({ snapshot, set }) =>
   async (payload: IBusinessCard) => {
-    // #0d6aff
-    // #4dffd5
-    // #f86eff
-    // #fffd6e
-    // #ff906e
     const currentState = await snapshot.getPromise(businessCardListState);
     const newState = [...currentState, payload];
     set(businessCardListState, newState);

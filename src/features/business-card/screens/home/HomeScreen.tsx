@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { AppStackNavigationIds, AppTestIDs } from '../../../../constants';
 import { BusinessCardView, EmptyCardsView } from '../../components';
 import { BaseView } from '../../../../components';
 import { FlatList } from 'react-native-gesture-handler';
-import styles from './HomeScreen.styles';
-import { ListRenderItem, View } from 'react-native';
+import Styles from './HomeScreen.styles';
+import { ListRenderItem, TouchableOpacity, View } from 'react-native';
 import { IBusinessCard } from '../../../../types';
 import {
   selectedBusinessCardState,
@@ -14,19 +14,24 @@ import {
 import { GenericStyles } from '../../../../styles';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { NavigationProp } from '@react-navigation/core';
+import { useTheme } from '../../../../theme';
+import { Text } from '../../../../typography';
 
 type HomeScreenProps = {
   navigation: NavigationProp<any, any>;
 };
 
 const HomeScreen = ({ navigation }: HomeScreenProps): JSX.Element => {
+  const { theme } = useContext(useTheme);
+  const styles = Styles(theme);
+
   const businessCards = useRecoilValue(businessCardListState);
   const setSelectedBusinessItem = useSetRecoilState<IBusinessCard | null>(
     selectedBusinessCardState,
   );
   let renderView = null;
 
-  const onPressAddFirstBCard = () => {
+  const onPressAddBCard = () => {
     navigation.navigate(AppStackNavigationIds.addBCard);
   };
 
@@ -54,12 +59,17 @@ const HomeScreen = ({ navigation }: HomeScreenProps): JSX.Element => {
       </View>
     );
   } else {
-    renderView = <EmptyCardsView onPressAddFirstBCard={onPressAddFirstBCard} />;
+    renderView = <EmptyCardsView onPressAddFirstBCard={onPressAddBCard} />;
   }
 
   return (
     <BaseView showHeader={false} testID={AppTestIDs.home.homeScreen}>
       {renderView}
+      <TouchableOpacity
+        onPress={onPressAddBCard}
+        style={styles.addFABContainer}>
+        <Text style={styles.addFABText}>+</Text>
+      </TouchableOpacity>
     </BaseView>
   );
 };
