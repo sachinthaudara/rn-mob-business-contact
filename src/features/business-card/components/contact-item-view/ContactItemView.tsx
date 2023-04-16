@@ -1,20 +1,23 @@
 import React, { useContext } from 'react';
 import { View } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import { Label } from '../../../../typography';
+
+import { Caption, Label } from '../../../../typography';
 import { GenericStyles } from '../../../../styles';
 import styles from './ContactItemView.styles';
 import { useTheme } from '../../../../theme';
-import { ContactDetails } from '../../../../enums';
+import { ContactDetails, ContactDetailsViewType } from '../../../../enums';
 import { IBusinessCard } from '../../../../types';
 import { NullView } from '../../../../components';
 
 interface ContactItemViewProps {
+  viewType?: ContactDetailsViewType;
   detailType: ContactDetails;
   item: IBusinessCard;
 }
 
 export const ContactItemView = ({
+  viewType = ContactDetailsViewType.HomeScreen,
   detailType,
   item,
 }: ContactItemViewProps): JSX.Element => {
@@ -34,15 +37,37 @@ export const ContactItemView = ({
     title = item.mobileNumber;
   }
 
-  return (
-    <View style={GenericStyles.rowFlexStart}>
-      <FeatherIcon
-        style={[styles.iconView, { backgroundColor: item.cardTintColor }]}
-        name={iconName}
-        size={12}
-        color={theme.text.primaryColor}
-      />
-      <Label>{title}</Label>
-    </View>
-  );
+  if (viewType === ContactDetailsViewType.HomeScreen) {
+    return (
+      <View style={GenericStyles.rowFlexStart}>
+        <FeatherIcon
+          style={[styles.iconView, { backgroundColor: item.cardTintColor }]}
+          name={iconName}
+          size={12}
+          color={theme.text.primaryColor}
+        />
+        <Label>{title}</Label>
+      </View>
+    );
+  } else {
+    return (
+      <View style={GenericStyles.center}>
+        <FeatherIcon
+          style={[
+            styles.manageViewIcon,
+            { backgroundColor: item.cardTintColor },
+          ]}
+          name={iconName}
+          size={28}
+          color={theme.text.primaryColor}
+        />
+        <Caption
+          style={styles.contactText}
+          numberOfLines={2}
+          ellipsizeMode="tail">
+          {title}
+        </Caption>
+      </View>
+    );
+  }
 };

@@ -10,6 +10,16 @@ const Styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: Spacing.x8,
   },
+  manageViewIcon: {
+    padding: Spacing.x8,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: Spacing.x8,
+  },
+  contactText: {
+    textAlign: 'center',
+  },
 });
 
 export default Styles;

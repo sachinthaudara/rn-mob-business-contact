@@ -14,13 +14,18 @@ const addBusinessCardAction =
 
 const deleteBusinessCardAction =
   ({ snapshot, set }) =>
-  async (payload: IBusinessCard) => {
-    const currentState = await snapshot.getPromise(businessCardListState);
-    const oldState = [...currentState];
-    const newState = oldState.filter(element => payload.id !== element.id);
+  async (payload: IBusinessCard | null) => {
+    if (payload) {
+      const currentState = await snapshot.getPromise(businessCardListState);
+      const oldState = [...currentState];
+      const newState = oldState.filter(element => payload.id !== element.id);
 
-    set(businessCardListState, newState);
-    await EncryptedStorage.setItem(kBusinessCardList, JSON.stringify(newState));
+      set(businessCardListState, newState);
+      await EncryptedStorage.setItem(
+        kBusinessCardList,
+        JSON.stringify(newState),
+      );
+    }
   };
 
 export { addBusinessCardAction, deleteBusinessCardAction };

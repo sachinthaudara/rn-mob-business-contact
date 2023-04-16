@@ -1,7 +1,11 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { BaseView } from '../../../../components';
 import { NavigationProp } from '@react-navigation/core';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { TouchableOpacity, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { useRecoilCallback, useRecoilValue } from 'recoil';
+
+import { BaseView } from '../../../../components';
 import {
   isEmpty,
   isValidText,
@@ -16,13 +20,10 @@ import {
   AppTextPhrases,
   KeyboardTypes,
 } from '../../../../constants';
-import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../../../theme';
 import { TextInputView } from '../../components';
-import { TouchableOpacity, View } from 'react-native';
 import Styles from './AddBCardScreen.styles';
 import { Text, Header, Caption, FontWeight } from '../../../../typography';
-import { useRecoilCallback, useRecoilValue } from 'recoil';
 import {
   addBusinessCardAction,
   businessCardListState,

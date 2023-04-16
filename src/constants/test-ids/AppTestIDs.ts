@@ -10,4 +10,9 @@ export const AppTestIDs = {
     addBCardScreen: `${AppConstants.appNamePrefix}AddBCard`,
     saveButton: `${AppConstants.appNamePrefix}AddBCard-SaveButton`,
   },
+  manageBCard: {
+    manageBCardScreen: `${AppConstants.appNamePrefix}ManageBCard`,
+    deleteButton: `${AppConstants.appNamePrefix}ManageBCard-DeleteButton`,
+    savePhoneContact: `${AppConstants.appNamePrefix}ManageBCard-SavePhoneContactButton`,
+  },
 };

@@ -1,6 +1,7 @@
 import normalizeText from './NormalizeText';
 
 const FontSize = {
+  f48: normalizeText(48),
   f32: normalizeText(32),
   f24: normalizeText(24),
   f22: normalizeText(22),

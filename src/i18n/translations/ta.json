@@ -27,7 +27,7 @@
     "nav_header": "Add Business Card",
     "welcome": {
       "title": "Fill all the details !",
-      "description": "Save contact details helps you to manage digital business card."
+      "description": "Saving contact details helps you to manage your digital business card."
     },
     "save_button": "Save Card",
     "person_name": {
@@ -53,6 +53,17 @@
     "linked_in_url": {
       "placeholder": "Enter LinkedIn URL",
       "error": "Invalid URL"
+    }
+  },
+  "manage_bcard": {
+    "nav_header": "Manage Business Card",
+    "delete": {
+      "title": "Delete",
+      "description": "Are you sure you want to delete ?"
+    },
+    "update": {
+      "title": "Save to Phone Contact",
+      "description": "Are you sure you want to save in phone contacts ?"
     }
   }
 }

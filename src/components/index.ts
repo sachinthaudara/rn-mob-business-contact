@@ -1,3 +1,3 @@
 export * from './null-view';
 export * from './base-view';
-export * from './card-view';
+export * from './fab-button';

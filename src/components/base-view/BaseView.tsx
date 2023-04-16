@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { View, TouchableOpacity, SafeAreaView } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+
 import { useTheme } from '../../theme/ThemeProvider';
 import { RNViewStyleProps } from '../../types/RNViewStyleProps';
 import Styles from './BaseView.styles';

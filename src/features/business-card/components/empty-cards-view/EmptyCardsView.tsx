@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import Lottie from 'lottie-react-native';
+import { useTranslation } from 'react-i18next';
+
 import { AppTestIDs, AppTextPhrases } from '../../../../constants';
 import { Caption, FontWeight, Label } from '../../../../typography';
 import { AppAnimations } from '../../../../assets';
 import { GenericStyles } from '../../../../styles';
 import Styles from './EmptyCardsView.styles';
 import { useTheme } from '../../../../theme';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useTranslation } from 'react-i18next';
 
 interface EmptyCardsViewProps {
   onPressAddFirstBCard: () => void;

@@ -1,18 +1,14 @@
 import React, { useContext } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import {
-  FontWeight,
-  Subtitle,
-  Header,
-  SmallText,
-  Text,
-} from '../../../../typography';
+
+import { FontWeight, Subtitle, SmallText, Text } from '../../../../typography';
 import { GenericStyles } from '../../../../styles';
 import { useTheme } from '../../../../theme';
 import { ContactDetails } from '../../../../enums';
 import { IBusinessCard } from '../../../../types';
 import Styles from './BusinessCardView.styles';
 import { ContactItemView } from '../contact-item-view';
+import { NameAvatarView } from '../name-avatar-view';
 
 interface BusinessCardViewProps {
   onPressBCard: (item: IBusinessCard) => void;
@@ -26,7 +22,6 @@ export const BusinessCardView = ({
   const { theme } = useContext(useTheme);
   const styles = Styles(theme);
 
-  const nameTitle = `${item.personName[0]}`.toUpperCase();
   return (
     <TouchableOpacity
       onPress={() => onPressBCard(item)}
@@ -38,9 +33,10 @@ export const BusinessCardView = ({
       ]}>
       <View>
         <View style={GenericStyles.rowFlexStart}>
-          <View style={styles.nameAvatar}>
-            <Header style={{ color: item.cardTintColor }}>{nameTitle}</Header>
-          </View>
+          <NameAvatarView
+            titleText={item.personName}
+            tintColor={item.cardTintColor}
+          />
           <View style={styles.titleContainer}>
             <Subtitle
               numberOfLines={2}

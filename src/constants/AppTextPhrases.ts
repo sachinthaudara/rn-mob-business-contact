@@ -53,4 +53,15 @@ export const AppTextPhrases = {
       error: 'add_bcard.linked_in_url.error',
     },
   },
+  manageBCard: {
+    navHeader: 'manage_bcard.nav_header',
+    delete: {
+      title: 'manage_bcard.delete.title',
+      description: 'manage_bcard.delete.description',
+    },
+    update: {
+      title: 'manage_bcard.update.title',
+      description: 'manage_bcard.update.description',
+    },
+  },
 };

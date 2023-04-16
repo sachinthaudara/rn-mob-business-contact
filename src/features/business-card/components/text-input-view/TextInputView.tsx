@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { TextInput, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+
 import { Label } from '../../../../typography';
 import Styles from './TextInputView.styles';
-import { useTranslation } from 'react-i18next';
 import { InputFieldType } from '../../../../enums';
 import { IInputField } from '../../../../types';
 import { useTheme } from '../../../../theme';
