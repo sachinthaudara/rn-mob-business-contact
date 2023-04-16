@@ -1,3 +1,3 @@
 export * from './null-view';
-export * from './base-view/BaseView';
-export * from './card-view/CardView';
+export * from './base-view';
+export * from './card-view';

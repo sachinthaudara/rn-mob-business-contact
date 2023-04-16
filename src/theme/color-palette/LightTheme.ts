@@ -7,8 +7,8 @@ const LightTheme: IMobileTheme = {
   default: {
     transparent: 'transparent',
     primaryColor: '#FFFFFF',
-    accentColor: '#0D1845',
-    secondaryColor: '#E2231A',
+    accentColor: '#9f3ade',
+    secondaryColor: '#de3a9c',
     shadowColor: hexToRgb('#000000', 0.1),
     errorColor: '#D2201E',
     linkColor: '#1C6AB8',
@@ -28,7 +28,7 @@ const LightTheme: IMobileTheme = {
   input: {
     border: {
       defaultColor: '#A4A9B2',
-      focusedColor: '#001F5F',
+      focusedColor: '#9f3ade',
     },
     background: {
       defaultColor: '#FFFFFF',
@@ -39,8 +39,8 @@ const LightTheme: IMobileTheme = {
     errorColor: '#D2201E',
   },
   button: {
-    primaryColor: '#E2231A',
-    secondaryColor: '#001F5F',
+    primaryColor: '#9f3ade',
+    secondaryColor: '#de3a9c',
     textColor: '#FFFFFF',
     disableColor: '#DCDFE0',
     disableTextColor: '#969BA3',

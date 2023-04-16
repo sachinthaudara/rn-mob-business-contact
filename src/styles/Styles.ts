@@ -10,7 +10,7 @@ const GenericStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  flex1ItemCentered: {
+  flex1ItemCenter: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

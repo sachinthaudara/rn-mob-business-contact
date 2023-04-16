@@ -17,8 +17,6 @@ const Styles = (colors: IMobileTheme) => {
       justifyContent: 'center',
     },
     headerText: {
-      fontSize: 20,
-      fontWeight: '700',
       marginHorizontal: 6,
     },
   });

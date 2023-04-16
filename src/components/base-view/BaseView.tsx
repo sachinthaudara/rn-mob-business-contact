@@ -3,10 +3,10 @@ import { View, TouchableOpacity, SafeAreaView } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useTheme } from '../../theme/ThemeProvider';
 import { RNViewStyleProps } from '../../types/RNViewStyleProps';
-import Styles from './BaseView.style';
+import Styles from './BaseView.styles';
 import { NavHeader } from '../../typography';
 
-export interface BaseViewProps {
+interface BaseViewProps {
   testID: string;
   children: React.ReactNode;
   screenTitle?: string | null;
@@ -22,7 +22,7 @@ export interface BaseViewProps {
  * @param goBackHandler this callback only works if the *showHeader* true
  * @returns
  */
-export function BaseView({
+export const BaseView = ({
   testID,
   children,
   screenTitle,
@@ -31,7 +31,7 @@ export function BaseView({
   contentContainerStyle,
   headerTintColor,
   showHeader = true,
-}: BaseViewProps) {
+}: BaseViewProps) => {
   const { theme } = useContext(useTheme);
   const styles = Styles(theme);
 
@@ -42,6 +42,7 @@ export function BaseView({
   };
 
   const emptyHeaderSpacer = <View style={styles.backButtonContainer} />;
+  const tintColor = headerTintColor || theme.text.primaryColor;
 
   const headerView = () => {
     if (showHeader) {
@@ -51,11 +52,7 @@ export function BaseView({
             <TouchableOpacity
               style={styles.backButtonContainer}
               onPress={goBack}>
-              <FeatherIcon
-                name="chevron-left"
-                size={30}
-                color={headerTintColor || theme.text.primaryColor}
-              />
+              <FeatherIcon name="chevron-left" size={30} color={tintColor} />
             </TouchableOpacity>
           ) : (
             emptyHeaderSpacer
@@ -64,12 +61,10 @@ export function BaseView({
             <NavHeader
               numberOfLines={1}
               ellipsizeMode="tail"
-              style={[
-                styles.headerText,
-                {
-                  color: headerTintColor || theme.text.primaryColor,
-                },
-              ]}>
+              style={{
+                ...styles.headerText,
+                color: tintColor,
+              }}>
               {screenTitle}
             </NavHeader>
           }
@@ -89,6 +84,4 @@ export function BaseView({
       <SafeAreaView />
     </View>
   );
-}
-
-export default BaseView;
+};

@@ -8,12 +8,12 @@ const Styles = (colors: IMobileTheme) => {
     header: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f24,
-      fontFamily: SharedMobileFontFamily.Bold,
+      fontFamily: SharedMobileFontFamily.ExtraBold,
     },
     navHeader: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f22,
-      fontFamily: SharedMobileFontFamily.SemiBold,
+      fontFamily: SharedMobileFontFamily.Bold,
     },
     title: {
       color: colors.text.primaryColor,
@@ -28,22 +28,22 @@ const Styles = (colors: IMobileTheme) => {
     caption: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f16,
-      fontFamily: SharedMobileFontFamily.Regular,
+      fontFamily: SharedMobileFontFamily.SemiBold,
     },
     text: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f14,
-      fontFamily: SharedMobileFontFamily.Regular,
+      fontFamily: SharedMobileFontFamily.SemiBold,
     },
     label: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f12,
-      fontFamily: SharedMobileFontFamily.Regular,
+      fontFamily: SharedMobileFontFamily.SemiBold,
     },
     smallText: {
       color: colors.text.primaryColor,
       fontSize: FontSize.f10,
-      fontFamily: SharedMobileFontFamily.Regular,
+      fontFamily: SharedMobileFontFamily.SemiBold,
     },
   });
 };
